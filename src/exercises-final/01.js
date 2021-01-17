@@ -41,6 +41,6 @@ function Usage({ onSubmit = (...args) => console.log("onSubmit", ...args) }) {
   return <FormWithError onSubmit={onSubmit} />;
 }
 
-Usage.title = "Фокус поля с ошибкой";
+Usage.title = "Фокус на инпут с ошибкой";
 
 export { FormWithError, Usage as default };

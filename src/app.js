@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router";
 import { BrowserRouter, Link } from "react-router-dom";
 import loadable from "react-loadable";
 
-const files = ["01"];
+const files = ["01", "02", "03"];
 
 const pages = files.reduce((p, filename, index, fullArray) => {
   const final = require(`./exercises-final/${filename}`);

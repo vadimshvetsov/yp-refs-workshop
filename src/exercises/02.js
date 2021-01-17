@@ -1,7 +1,6 @@
 /*
-  Представлена простая форма с инпутом `name`. При заполнении инпута и
-  отправки формы имя попадает в консоль. При отправлении пустой формы получим
-  ошибку валидации.
+  Та же самая форма, что и в первом задании. Только теперь нет прямого доступа 
+  к инпуту, потому что его перенесли в переиспользуемый компонент.
 
   😱 Проблема:
 
@@ -18,10 +17,20 @@
   Чтобы воспользоваться подсказкой нужно вызвать функцию `decodeHint` в консоли,
   передав зашифрованный текст подсказки как аргумент.
 
-  1. 0J3Rg9C20L3QviDQv9C+0LvRg9GH0LjRgtGMIGByZWZgIERPTS3RjdC70LXQvNC10L3RgtCwINC40L3Qv9GD0YLQsCwg0YfRgtC+0LHRiyDRg9GB0YLQsNC90L7QstC40YLRjCDQvdCwINC90LXQvCDRhNC+0LrRg9GB
+  1. 0JzQvtC20L3QviDQstC+0YHQv9C+0LvRjNC30L7QstCw0YLRjNGB0Y8gYFJlYWN0LmZvcndhcmRSZWYoKWAg0LTQu9GPINC/0LXRgNC10LTQsNGH0LggYHJlZmAg0LIgYElucHV0V2l0aExhYmVsYA==
 */
 
 import React, { useState } from "react";
+
+const InputWithLabel = ({ labelText, name, isError, onChange }) => (
+  <>
+    <label htmlFor={name}>
+      {labelText}{" "}
+      {isError && <span style={{ color: "red" }}>* Обязательно</span>}
+    </label>
+    <input name={name} id={name} type="text" onChange={onChange} />
+  </>
+);
 
 const FormWithError = ({ onSubmit }) => {
   const [isError, setIsError] = useState(false);
@@ -43,13 +52,10 @@ const FormWithError = ({ onSubmit }) => {
 
   return (
     <form onSubmit={onSubmitAction} style={{ display: "grid", gridGap: 5 }}>
-      <label htmlFor="firstName">
-        Имя {isError && <span style={{ color: "red" }}>* Обязательно</span>}
-      </label>
-      <input
+      <InputWithLabel
+        labelText="Имя:"
         name="firstName"
-        id="firstName"
-        type="text"
+        isError={isError}
         onChange={onNameChange}
       />
       <button type="submit">Отправить</button>
@@ -65,6 +71,6 @@ function Usage({ onSubmit = (...args) => console.log("onSubmit", ...args) }) {
   return <FormWithError onSubmit={onSubmit} />;
 }
 
-Usage.title = "Фокус на инпут с ошибкой";
+Usage.title = "Передача ссылки на элемент";
 
 export { FormWithError, Usage as default };

@@ -1,7 +1,7 @@
 {
-  "name": "refs-workshop",
+  "name": "refs-mini-workshop",
   "version": "1.0.0",
-  "description": "An example of how to use the react-testing-library in codesandbox",
+  "description": "",
   "keywords": [],
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
