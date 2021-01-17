@@ -2,7 +2,7 @@ import "@testing-library/jest-dom/extend-expect";
 import React from "react";
 import { render, fireEvent } from "@testing-library/react";
 import user from "@testing-library/user-event";
-import { EditableFormWithError } from "../exercises-final/03";
+import { EditableFormWithError } from "../exercises/03";
 
 test("EditableFormWithError move focus on edit and after submit", () => {
   const onSubmit = jest.fn();
